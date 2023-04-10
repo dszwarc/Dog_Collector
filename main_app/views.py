@@ -12,9 +12,6 @@ def dog_index(request):
 def about(request):
     return render(request, 'about.html')
 
-# dogs = [
-#   Dog('Appa', 'Corgi', 'The goodest little boi', 5),
-#   Dog('Kropka', 'Beagle', 'My first dog <3', 18),
-#   Dog('Chip', 'Unknown mix', "Appa's least favorite cousin.", 4),
-#   Dog('Momo', 'Dachshund', "Appa's brother/sister that he doesn't know about.", 0)
-# ]
+def dog_detail(request, dog_id):
+    dog = Dog.models.get(id=dog_id)
+    return render(request, 'dogs/details.html', {'dog':dog})
