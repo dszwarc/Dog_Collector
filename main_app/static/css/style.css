@@ -6,6 +6,8 @@ body {
   
 main {
 flex: 1 0 auto;
+flex-direction: row;
+justify-content: center;
 }
 
 footer.page-footer {
@@ -23,4 +25,9 @@ h1{
 
 #about{
     text-align: center;
+}
+
+.card{
+    align-self: center;
+    margin: 10px;
 }
