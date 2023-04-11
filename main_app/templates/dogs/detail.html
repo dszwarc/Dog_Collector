@@ -43,4 +43,20 @@
     </table>
   </div>
 </div>
+
+<script>
+  const dateEl = document.getElementById('id_date');
+  const exerEl = document.getElementById('id_exercise');
+
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+  M.FormSelect.init(exerEl);
+
+</script>
+
 {% endblock %}

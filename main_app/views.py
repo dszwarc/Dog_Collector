@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Dog
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import ExerciseForm
 # Create your views here.
 
-def add_exercise(request):
-    pass
+def add_exercise(request, dog_id):
+    form = ExerciseForm(request.POST)
+    if form.is_valid():
+        new_exercise = form.save(commit=False)
+        new_exercise.dog_id = dog_id
+        new_exercise.save()
+    return redirect('dogs_detail', dog_id=dog_id)
+
 
 def home(request):
     return render(request, 'home.html')
