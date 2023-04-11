@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from .models import Dog
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import ExerciseForm
 # Create your views here.
+
+def add_exercise(request):
+    pass
+
 def home(request):
     return render(request, 'home.html')
 
@@ -14,7 +19,11 @@ def about(request):
 
 def dogs_detail(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
-    return render(request, 'dogs/detail.html', {'dog':dog})
+    exercise_form = ExerciseForm()
+    return render(request, 'dogs/detail.html', {'dog':dog, 'form': exercise_form})
+    
+    
+
 
 class DogCreate(CreateView):
     model = Dog
