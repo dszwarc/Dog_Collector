@@ -1,6 +1,17 @@
 from django.db import models
 from django.urls import reverse
 
+class Toy(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('toys_detail', kwargs={'pk': self.id})
+
+
 # Create your models here.
 class Dog(models.Model):
     name = models.CharField(max_length=100)
