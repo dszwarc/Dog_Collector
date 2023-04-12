@@ -30,14 +30,15 @@ def about(request):
 def dogs_detail(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
     exercise_form = ExerciseForm()
-    return render(request, 'dogs/detail.html', {'dog':dog, 'form': exercise_form})
+    toys_dog_doesnt_have = Toy.objects.exclude(id__in=dog.toys.all().values_list('id'))
+    return render(request, 'dogs/detail.html', {'dog':dog, 'form': exercise_form, 'toys': toys_dog_doesnt_have})
     
     
 
 
 class DogCreate(CreateView):
     model = Dog
-    fields = '__all__'
+    fields = ['name','breed','description','age']
 
 class DogUpdate(UpdateView):
     model = Dog
