@@ -18,7 +18,7 @@ class Dog(models.Model):
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
-
+    toys = models.ManyToManyField(Toy)
     def get_absolute_url(self):
         return reverse('dogs_detail', kwargs={'dog_id': self.id})
     
